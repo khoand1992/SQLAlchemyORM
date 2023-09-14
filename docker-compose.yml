@@ -1,0 +1,34 @@
+#version: '3.7'
+#
+#services:
+#  mssql:
+#    container_name: sql-server
+#    image: mcr.microsoft.com/mssql/server:2017-latest
+#    #image: mcr.microsoft.com/mssql/server:2017-CU11-ubuntu
+#    restart: always
+#    environment:
+#      ACCEPT_EULA: "Y"
+#      SA_PASSWORD: "Dangkhoa121292@@"
+#    ports:
+#      - 1433:1433
+#    volumes:
+#      - my-volume:/var/opt/mssql
+#
+#volumes:
+#  my-volume:
+
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456789
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
